@@ -8,9 +8,8 @@ async function getApiInfo(){
     try {
         let URL = `https://api.rawg.io/api/games?key=${API_KEY}`
         let apiData = [];
-        let next_url = URL
             for(let i = 0; i < 5; i++){
-                let pages = await axios.get(next_url)
+                let pages = await axios.get(URL)
                 pages.data.results.map(e => {
                     apiData.push(
                         {
@@ -26,7 +25,7 @@ async function getApiInfo(){
                     next_url = pages.data.next
                 })
             }
-        console.log(apiData.length, 'VIDEO JUEGOSSSSSSSSSSSSSSSSSSSSS')    
+            console.log(apiData.length, 'VIDEO JUEGOSSSSSSSSSSSSSSSSSSSSSSSSSS')    
         return apiData
     }
     catch (error) {
