@@ -26,7 +26,7 @@ async function getDBInfo(){
                 createdInDB: e.createdInDB
             }}
             )
-            console.log(data.lenght,'ESTOY ENTRANDO A LA BASE DE DATOS')
+            console.log(data.lenght,'JUEGOS EN LA BASE DE DATOS')
         return data
     } catch (error) {
         console.log(error)

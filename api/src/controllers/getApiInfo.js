@@ -25,7 +25,7 @@ async function getApiInfo(){
                     next_url = pages.data.next
                 })
             }
-            console.log(apiData.length, 'VIDEO JUEGOSSSSSSSSSSSSSSSSSSSSSSSSSS')    
+            console.log(apiData.length, 'VIDEO JUEGOS TRAIDOS DE LA API')    
         return apiData
     }
     catch (error) {
