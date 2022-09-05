@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import GamesCard from "./gamesCard/GamesCard";
+//import GamesCard from "./gamesCard/GamesCard";
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllGames, clearFilters, orderByName, orderByRating, orderByLocation, getAllGenres, orderByGenres } from '../../redux/actions';
 import { Link } from 'react-router-dom';
-import Loading from '../loading/Loading';
+//import Loading from '../loading/Loading';
 import SearchBar from '../form/SearchBar';
-import Error404 from '../error/Error404';
+//import Error404 from '../error/Error404';
 import Pagination from '../pagination/Pagination';
-import styles from './Games.module.css';
+import './styles/Filters.css';
 
 
 const Filters = () => {
@@ -123,7 +123,7 @@ const Filters = () => {
                                 allGames={games.length}
                             />
 
-//AQUI EMPIEZA CARDS
+{/* AQUI EMPIEZA CARDS */}
                             <div className={styles.conteinerGamescard}>    
                                 {
                                     currentGames?.map(e =>
@@ -139,7 +139,7 @@ const Filters = () => {
                                     )
                                 }
                             </div>
-//AQUI TERMINA CARDS
+{/* AQUI TERMINA CARDS */}
 
 
                             <Pagination

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {getAllGames, getAllGenres, clearFilters, createGame} from "../redux/actions";
-import './CreateGame.css';
+import './styles/CreateGame.css';
 
 
 
@@ -145,7 +145,7 @@ const CreateGame = () => {
         dispacth(getAllGenres())
         dispacth(getAllGames())
         return () => {
-            dispacth(clearCache())
+            dispacth(clearFilters())
         }
     }, [dispacth])
 
