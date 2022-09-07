@@ -9,7 +9,7 @@ import './styles/GameDetails.css'
 
 
 const GameDetails = () => {
-    const history = useHistory();
+    //const history = useHistory();
     const { id } = useParams()
     const dispacth = useDispatch()
 
@@ -21,13 +21,15 @@ const GameDetails = () => {
         }
     }, [dispacth, id])
 
-    const game = useSelector(state => state.game)        //REVISAR AQUIIIIIIIIIIIIII, NO TENGO EL DELETE CREADO EN EL BACK
-    const handlleDelete = (id) => {
-        dispacth(deleteGame(id))
-        dispacth(clearFilters())
-        history.push("/home")
-        alert("Game successfully removed")               //REVISAR AQUIIIIIIIIIIIIII, NO TENGO EL DELETE CREADO EN EL BACK
-    }
+    const game = useSelector(state => state.game)        
+                                                        //REVISAR AQUIIIIIIIIIIIIII, NO TENGO EL DELETE CREADO EN EL BACK
+    // const handlleDelete = (id) => {
+    //     dispacth(deleteGame(id))
+    //     dispacth(clearFilters())
+    //     history.push("/home")
+    //     alert("Game successfully removed")               
+    // }
+                                                        //REVISAR AQUIIIIIIIIIIIIII, NO TENGO EL DELETE CREADO EN EL BACK
 
     return (
         game.msg ?                                            //ERROR
@@ -60,13 +62,13 @@ const GameDetails = () => {
                         }
                     </div>
                     <div className='conteinerbtn'>
-                    {
+                    {/* {
                             game.createdInDB === true ?     //REVISAR AQUIIIIIIIIIIIIII NO TENGO EL DELETE CREADO EN EL BACK
                                 // <button className={styles.deleteGameBtn} onClick={() => handlleDelete(id)}>Delete Game</button>
                                 <button onClick={() => handlleDelete(id)} className='deleteGameBtn'><span className='text'>Delete</span><span className='icon'></span></button>
                                 :                           //REVISAR AQUIIIIIIIIIIIIII NO TENGO EL DELETE CREADO EN EL BACK
                                 null
-                    }
+                    } */}
                     </div>
                     <div className='conteinerRating'>
                         <div className='ratingra'>Game rating</div>

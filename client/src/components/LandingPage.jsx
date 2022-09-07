@@ -9,7 +9,7 @@ const LandingPAge = () => {
     const dispatch = useDispatch()
     
     useEffect(() => {
-      dispatch(clearFilters())  
+        dispatch(clearFilters())  
     },[dispatch])
 
     return (
