@@ -18,15 +18,15 @@ function Pagination({ allGames }) {
 
     return (
     <div>
-        <nav className={styles.conteiner}>
+        <nav className='conteiner'>
 
-        <button disabled={pages - 1 === 0} className={styles.btn} onClick={() => dispatch(setCurrentPage(pages - 1))}>Previous</button>
+        <button disabled={pages - 1 === 0} className='btn' onClick={() => dispatch(setCurrentPage(pages - 1))}>Previous</button>
         { 
         pageNumbers?.map(e => (
-            <button key={e} className={styles.btn} onClick={() => dispatch(setCurrentPage(e))}>{e}</button>
+            <button key={e} className='btn' onClick={() => dispatch(setCurrentPage(e))}>{e}</button>
         ))
         }
-        <button disabled={pages === page} className={styles.btn} onClick={() => dispatch(setCurrentPage(pages + 1))}>Next</button>
+        <button disabled={pages === page} className='btn' onClick={() => dispatch(setCurrentPage(pages + 1))}>Next</button>
         </nav>
     </div>
     )
