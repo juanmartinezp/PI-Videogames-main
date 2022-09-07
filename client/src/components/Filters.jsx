@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-//import GamesCard from "./gamesCard/GamesCard";
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllGames, clearFilters, orderByName, orderByRating, orderByLocation, getAllGenres, orderByGenres } from '../../redux/actions';
+import { getAllGames, clearFilters, orderByName, orderByRating, orderByLocation, getAllGenres, orderByGenres } from '../redux/actions';
 import { Link } from 'react-router-dom';
-//import Loading from '../loading/Loading';
-import SearchBar from '../form/SearchBar';
-//import Error404 from '../error/Error404';
-import Pagination from '../pagination/Pagination';
+import GameCard from "./GameCard";
+import SearchBar from './SearchBar';
+import Pagination from './Pagination';
+import loadingGif from './images/loading.gif';
+import errorGif from './images/error.gif';
 import './styles/Filters.css';
 
 
@@ -60,21 +60,23 @@ const Filters = () => {
 
     return (
         allGames.length === 0 ?
-            <Loading />
+        <div className="loading">
+        <img className="loadingImg" src={loadingGif} alt="not found" />
+        </div>
             :
             <>
-                <div className={styles.conteinerGames}>
-                    <div className={styles.titleConteiner}>
-                    <div className={styles.title}>APP GAMERY</div>
+                <div className='conteinerGames'>
+                    <div className='titleConteiner'>
+                    <div className='title'>APP GAMERY</div>
                         <SearchBar />
                         {
                             reload === true ?
-                                <button className={styles.reload} onClick={() => handlleCLick()}>RELOAD GAMES</button>
+                                <button className='reload' onClick={() => handlleCLick()}>RELOAD GAMES</button>
                                 :
                                 null
                         }
                         </div>
-                        <div className={styles.create}>
+                        <div className='create'>
                             <Link to="/create">
                                 <h4>Create a game</h4>
                             </Link>
@@ -85,12 +87,14 @@ const Filters = () => {
 
                 {
                     allGames.error ?
-                        <Error404 />
+                    <div className="error">
+                    <img className="errorImg" src={errorGif} alt="not found" />
+                    </div>
                         :
                         <>
-                            <div className={styles.all}>
-                                <div className={styles.filterTitle}>Orders and filters</div>
-                                <div className={styles.filterConteiner}>
+                            <div className='all'>
+                                <div className='filterTitle'>Orders and filters</div>
+                                <div className='filterConteiner'>
                                     <select defaultValue="Alphabetical order" onChange={(e) => handlleOrder(e)}>
                                         <option value='Alphabetical order' disabled>Alphabetical order</option>
                                         <option value='A-Z'>A-Z</option>
@@ -124,11 +128,11 @@ const Filters = () => {
                             />
 
 {/* AQUI EMPIEZA CARDS */}
-                            <div className={styles.conteinerGamescard}>    
+                            <div className='conteinerGamescard'>    
                                 {
                                     currentGames?.map(e =>
-                                        <div className={styles.conteiner_conteinerGames} key={e.id}>
-                                            <GamesCard
+                                        <div className='conteiner_conteinerGames' key={e.id}>
+                                            <GameCard
                                                 id={e.id}
                                                 name={e.name}
                                                 image={e.image}

@@ -44,11 +44,11 @@ const rootReducer = (state = initialState, action) => {
                 page: 1
         }
 
-        case DELETE_GAME:
-            return {
-                ...state,
-                page: 1
-            }
+        // case DELETE_GAME:
+        //     return {
+        //         ...state,
+        //         page: 1
+        //     }
 
         case GET_GAME_BY_NAME:
             let error = {error: "No results found"}

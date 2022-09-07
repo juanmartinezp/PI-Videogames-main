@@ -1,28 +1,28 @@
 import React from "react"
-//import noImage from "../../../assets/noImg.png"
+import errorGif from './images/error.gif';
 import { Link } from 'react-router-dom';
 import './styles/GameCard.css'
 
-const GamesCard = ({ id, name, image, rating, genres }) => {
+const GameCard = ({ id, name, image, rating, genres }) => {
     return (
         <>
-            <div className={styles.card}>
+            <div className='card'>
 
                 {
 
                     image ?
-                        <img className={styles.img} src={image} alt="lol" />
+                        <img className='img' src={image} alt="lol" />
                         :
-                        <img className={styles.img} src={noImage} alt="lol" />
+                        <img className='img' src={errorGif} alt="lol" />
 
                 }
-                <div className={styles.cardDetails}>
-                    <p className={styles.textTitle}>{name}</p>
-                    <p className={styles.textBody}>{genres?.join(" | ")}</p>
-                    <p className={styles.textBody}>{rating}</p>
+                <div className='cardDetails'>
+                    <p className='textTitle'>{name}</p>
+                    <p className='textBody'>{genres?.join(" | ")}</p>
+                    <p className='textBody'>{rating}</p>
                 </div>
                 <Link to={`/game/${id}`}>
-                    <button className={styles.cardButton}>More info</button>
+                    <button className='cardButton'>More info</button>
                 </Link>
             </div>
         </>
@@ -30,4 +30,4 @@ const GamesCard = ({ id, name, image, rating, genres }) => {
 
 }
 
-export default GamesCard
+export default GameCard

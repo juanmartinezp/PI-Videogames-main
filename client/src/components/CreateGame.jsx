@@ -2,14 +2,17 @@ import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {getAllGames, getAllGenres, clearFilters, createGame} from "../redux/actions";
+import loadingGif from './images/loading.gif';
 import './styles/CreateGame.css';
+
+//cuando este con estilos ver de agregar la imagen de ERROR  para que la muestre
 
 
 
 const CreateGame = () => {
     const games = useSelector(state => state.games);
-    const db = games.filter(e => e.createdInDb === true);
-    const [value, setValue] = useState({
+    const db = games.filter(e => e.createdInDB === true);
+    const [input, setInput] = useState({
         name: "",
         description: "",
         released: "",
@@ -26,6 +29,11 @@ const CreateGame = () => {
 
         if(!input.name.trim()) {
             error.name = "Name is required";
+        }
+
+        let search = db.find(e => e.name.toLowerCase() === input.name.toLowerCase())  //me fijo si el nombre del juego ya existe en la db
+        if(search){
+            error.name = "That game already exists";
         }
 
         if(!input.description.trim()) {
@@ -55,13 +63,14 @@ const CreateGame = () => {
         if(!input.image.trim()) {
             error.image = "Image URL is required";
         }
+
         return error;
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-            dispatchEvent(createGame(value))
-            setValue({
+            dispatchEvent(createGame(input))
+            setInput({
                 name: "",
                 description: "",
                 released: "",
@@ -75,66 +84,66 @@ const CreateGame = () => {
 
 
     const checkGenres = (e) => {
-        setValue({
-            ...value,
-            genres: value.genres.includes(e.target.value) ?
-            value.genres :
-            [...value.genres, e.target.value]
+        setInput({
+            ...input,
+            genres: input.genres.includes(e.target.input) ?
+            input.genres :
+            [...input.genres, e.target.input]
         })
         setError(validate({
-            ...value,
-            genres: value.genres.includes(e.target.value) ?
-            value.genres :
-            [...value.genres, e.target.value]
+            ...input,
+            genres: input.genres.includes(e.target.input) ?
+            input.genres :
+            [...input.genres, e.target.input]
         }))
     }
 
     const checkPlatforms = (e) => {
-        setValue({
-            ...value,
-            platforms: value.platforms.includes(e.target.value) ?
-            value.platforms :
-            [...value.platforms, e.target.value]
+        setInput({
+            ...input,
+            platforms: input.platforms.includes(e.target.input) ?
+            input.platforms :
+            [...input.platforms, e.target.input]
         })
         setError(validate({
-            ...value,
-            platforms: value.platforms.includes(e.target.value) ?
-            value.platforms :
-            [...value.platforms, e.target.value]
+            ...input,
+            platforms: input.platforms.includes(e.target.input) ?
+            input.platforms :
+            [...input.platforms, e.target.input]
         }))
     }
 
     const handlleChange = (e) => {
-        setValue({
-            ...value,
-            [e.target.name] : e.target.value
+        setInput({
+            ...input,
+            [e.target.name] : e.target.input
         })
         setError(validate({
-            ...value,
-            [e.target.name] : e.target.value
+            ...input,
+            [e.target.name] : e.target.input
         }))
     }
 
     const filterGenres = (e) => {
-        let newGenres = value.genres.filter(i => i !== e.target.value)
-        setValue({
-            ...value,
+        let newGenres = input.genres.filter(i => i !== e.target.input)
+        setInput({
+            ...input,
             genres: newGenres
         })
         setError(validate({
-            ...value,
+            ...input,
             genres: newGenres
         }))
     }
 
     const filterPlatfroms = (e) => {
-        let newPlatforms = value.platforms.filter(i => i !== e.target.value)
-        setValue({
-            ...value,
+        let newPlatforms = input.platforms.filter(i => i !== e.target.input)
+        setInput({
+            ...input,
             platforms: newPlatforms
         })
         setError(validate({
-            ...value,
+            ...input,
             platforms: newPlatforms
         }))
     }
@@ -155,99 +164,101 @@ const CreateGame = () => {
     return (
 
             games.length === 0?
-            <Loading/>
+            <div className="loading">
+            <img className="loadingImg" src={loadingGif} alt="not found" />
+            </div>
             :
-            <div className={styles.formConteiner}>
-            <div className={styles.formConteinerData}>
-            <Link className={styles.back} to="/home">Go back home</Link>
+            <div className='formConteiner'>
+            <div className='formConteinerData'>
+            <Link className='back' to="/home">Go back home</Link>
             <form>
-                <div className={styles.name}>
+                <div className='name'>
                 <label>Insert a name: </label>
-                <input autoComplete="off" type="text" placeholder="name" name="name" value={value.name} onChange={(e) => handlleChange(e)}></input>
+                <input autoComplete="off" type="text" placeholder="name" name="name" input={input.name} onChange={(e) => handlleChange(e)}></input>
                 {
-                    error.name && <p className={styles.error}>{error.name}</p>
+                    error.name && <p className='error'>{error.name}</p>
                 }
                 </div>
-                <div className={styles.genresC}>
+                <div className='genres'>
                 <label>Selected genres: </label>
-                <select defaultValue="Genres" id="genres" name="genres" onChange={(e) => checkGenres(e)}>
+                <select defaultInput="Genres" id="genres" name="genres" onChange={(e) => checkGenres(e)}>
                 <option disabled={true}>Genres</option>
             {
                 genres.map(e => 
-                <option key={e.id} value={e.id}>
+                <option key={e.id} input={e.id}>
                     {e.name}
                 </option>
                 )
             }
                 </select>
                 {
-                        error.genres && <p className={styles.error}>{error.genres}</p>
+                        error.genres && <p className='error'>{error.genres}</p>
                 }
                 </div>
-                <div className={styles.platformsC}>
+                <div className='platforms'>
                 <label>Selected platforms: </label>
-                <select id="platforms" defaultValue="Platforms" name="platforms" onChange={(e) => checkPlatforms(e)}>
+                <select id="platforms" defaultInput="Platforms" name="platforms" onChange={(e) => checkPlatforms(e)}>
                 <option disabled={true}>Platforms</option>
                     {
                         platforms.map(e =>
-                        <option key={e} value={e}>
+                        <option key={e} input={e}>
                             {e}
                         </option>
                         )
                     }
                 </select>
                 {
-                        error.platforms && <p className={styles.error}>{error.platforms}</p>
+                        error.platforms && <p className='error'>{error.platforms}</p>
                 }
                 </div>
-                <div className={styles.description}>
+                <div className='description'>
                 <label>Insert a description: </label>
-                <input autoComplete="off" type="text" placeholder="description" name="description" value={value.description} onChange={(e) => handlleChange(e)}></input>
+                <input autoComplete="off" type="text" placeholder="description" name="description" input={input.description} onChange={(e) => handlleChange(e)}></input>
                 {
-                        error.description && <p className={styles.error}>{error.description}</p>
+                        error.description && <p className='error'>{error.description}</p>
                 }
                 </div>
-                <div className={styles.rating}>
+                <div className='rating'>
                 <label>Insert a rating: </label>
-                <input type="number" placeholder="rating" name="rating" value={value.rating} onChange={(e) => handlleChange(e)}></input>
+                <input type="number" placeholder="rating" name="rating" input={input.rating} onChange={(e) => handlleChange(e)}></input>
                 {
-                        error.rating && <p className={styles.error}>{error.rating}</p>
+                        error.rating && <p className='error'>{error.rating}</p>
                 }
                 </div>
-                <div className={styles.release}>
+                <div className='release'>
                 <label>Insert a release day: </label>
-                <input type="date" name="released" value={value.released} onChange={(e) => handlleChange(e)}></input>
+                <input type="date" name="released" input={input.released} onChange={(e) => handlleChange(e)}></input>
                 {
-                        error.released && <p className={styles.error}>{error.released}</p>
+                        error.released && <p className='error'>{error.released}</p>
                 }
                 </div>
-                <div className={styles.img}>
+                <div className='img'>
                 <label>Insert a image URL: </label>
-                <input autoComplete="off" type="text" name="image" placeholder="Paste a img URL" value={value.image} onChange={(e) => handlleChange(e)}></input>
+                <input autoComplete="off" type="text" name="image" placeholder="Paste a img URL" input={input.image} onChange={(e) => handlleChange(e)}></input>
                 </div>
-                <button className={styles.btn} type="submit" disabled={!value.name || Object.keys(error).length > 0} onClick={(e) => handleSubmit(e)}>Crear</button>
+                <button className='btn' type="submit" disabled={!input.name || Object.keys(error).length > 0} onClick={(e) => handleSubmit(e)}>Crear</button>
         </form>
         </div>
 
-        <div className={styles.conteinerGenres}>
-        <div className={styles.selectedGenres}>Selected genres</div>
-        <div className={styles.genres}>
+        <div className='conteinerGenres'>
+        <div className='selectedGenres'>Selected genres</div>
+        <div className='genres'>
         {
-            value.genres?.map(e => {
+            input.genres?.map(e => {
                 let genresSelected = genres.find(i => i.id === Number(e))
                 return (
-                    <button key={e} className={styles.btn3} value={genresSelected.id} type="button" onClick={(e) => filterGenres(e)}>{genresSelected.name}</button>
+                    <button key={e} className='btn3' input={genresSelected.id} type="button" onClick={(e) => filterGenres(e)}>{genresSelected.name}</button>
                 )    
             })
         }
         </div>
         </div>
-        <div className={styles.conteinerPlatforms}>
-        <div className={styles.selectedPlatforms}>Selected platforms</div>
-        <div className={styles.platforms}>
+        <div className='conteinerPlatforms'>
+        <div className='selectedPlatforms'>Selected platforms</div>
+        <div className='platforms'>
         {
-            value.platforms?.map(e =>
-                <button key={e} className={styles.btn2} value={e} type="button" onClick={(e) => filterPlatfroms(e)}>{e}</button>
+            input.platforms?.map(e =>
+                <button key={e} className='btn2' input={e} type="button" onClick={(e) => filterPlatfroms(e)}>{e}</button>
             )
         }
         </div>
