@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";    // useHistory  si voy a hacer el delete
 import { clearFilters, getGameByID } from "../redux/actions";
 import errorGif from './images/error.gif';
 import loadingGif from './images/loading.gif';
@@ -44,6 +44,10 @@ const GameDetails = () => {
             game.length === 0 ?
             <div className="loading">
             <img className="loadingImg" src={loadingGif} alt="not found" />
+                <div class="loader">
+                    <span>Loading</span>
+                    <span>Loading</span>
+                </div>
             </div>
                 :
                 <>

@@ -14,9 +14,17 @@ const LandingPAge = () => {
 
     return (
         <div className='home'>
-            <h2 className='homeText'>APP GAMERY</h2>
+            <div class="homeText">
+                <span>W</span>
+                <span>E</span>
+                <span>L</span>
+                <span>C</span>
+                <span>O</span>
+                <span>M</span>
+                <span>E</span>
+            </div>
             <Link to="/home">
-            <h4 className='homeLink'>CLICK HERE!</h4>
+            <h4 className="homeLink">INSERT COIN 🪙</h4>
             </Link>
         </div>
     )

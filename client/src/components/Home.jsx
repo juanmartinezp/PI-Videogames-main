@@ -7,7 +7,7 @@ import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 import loadingGif from './images/loading.gif';
 import errorGif from './images/error.gif';
-import './styles/Filters.css';
+import './styles/Home.css';
 
 
 const Filters = () => {
@@ -62,12 +62,16 @@ const Filters = () => {
         allGames.length === 0 ?
         <div className="loading">
         <img className="loadingImg" src={loadingGif} alt="not found" />
+            <div class="loader">
+                <span>Loading</span>
+                <span>Loading</span>
+            </div>
         </div>
             :
             <>
                 <div className='conteinerGames'>
                     <div className='titleConteiner'>
-                    <div className='title'>APP GAMERY</div>
+                    <div className='title'>VIDEOGAMES APP</div>
                         <SearchBar />
                         {
                             reload === true ?
@@ -78,44 +82,43 @@ const Filters = () => {
                         </div>
                         <div className='create'>
                             <Link to="/create">
-                                <h4>Create a game</h4>
+                                <h4>Create a Game</h4>
                             </Link>
                         </div>
-
-
                 </div>
 
                 {
                     allGames.error ?
                     <div className="error">
+                    <div className='errorMsg'>Oops, something went wrong!</div>
                     <img className="errorImg" src={errorGif} alt="not found" />
                     </div>
                         :
                         <>
-                            <div className='all'>
+                            <div className='allFilters'>
                                 <div className='filterTitle'>Orders and filters</div>
                                 <div className='filterConteiner'>
                                     <select defaultValue="Alphabetical order" onChange={(e) => handlleOrder(e)}>
-                                        <option value='Alphabetical order' disabled>Alphabetical order</option>
-                                        <option value='A-Z'>A-Z</option>
-                                        <option value='Z-A'>Z-A</option>
+                                        <option value='Alphabetical order' disabled>Oder by Name</option>
+                                        <option value='A-Z'>A to Z</option>
+                                        <option value='Z-A'>Z to A</option>
                                     </select>
 
                                     <select defaultValue="Order by rating" onChange={(e) => handlleSelect(e)}>
-                                        <option value='Order by rating' disabled>Order by rating</option>
+                                        <option value='Order by rating' disabled>Order by Rating</option>
                                         <option value='Higher - lower'>Higher - lower</option>
                                         <option value='Lower - higher'>Lower - higher</option>
                                     </select>
 
                                     <select defaultValue="Order created" onChange={(e) => handlleSelectLocation(e)}>
-                                        <option value='Order created' disabled>Filter created</option>
+                                        <option value='Order created' disabled>Filter by Origin</option>
                                         <option value='All games' >All games</option>
                                         <option value='Created at db' >Created at db</option>
                                         <option value='Only api games'>Only api games</option>
                                     </select>
 
                                     <select defaultValue="Order by genres" onChange={(e) => handlleSelectGenres(e)}>
-                                        <option value="Order by genres" disabled>Filter by genres</option>
+                                        <option value="Order by genres" disabled>Filter by Genres</option>
                                         <option value="Default order">Default order</option>
                                         {
                                             genres?.map(e => <option key={e.id} value={e.name}>{e.name}</option>)

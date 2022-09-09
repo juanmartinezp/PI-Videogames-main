@@ -166,21 +166,25 @@ const CreateGame = () => {
             games.length === 0?
             <div className="loading">
             <img className="loadingImg" src={loadingGif} alt="not found" />
+                <div class="loader">
+                    <span>Loading</span>
+                    <span>Loading</span>
+                </div>
             </div>
             :
             <div className='formConteiner'>
             <div className='formConteinerData'>
-            <Link className='back' to="/home">Go back home</Link>
+            <Link className='back' to="/home">🏠 Home</Link>
             <form>
                 <div className='name'>
-                <label>Insert a name: </label>
-                <input autoComplete="off" type="text" placeholder="name" name="name" input={input.name} onChange={(e) => handlleChange(e)}></input>
+                <label>Name: </label>
+                <input autoComplete="off" type="text" placeholder="Name your videogame" name="name" input={input.name} onChange={(e) => handlleChange(e)}></input>
                 {
                     error.name && <p className='error'>{error.name}</p>
                 }
                 </div>
                 <div className='genres'>
-                <label>Selected genres: </label>
+                <label>Genres: </label>
                 <select defaultInput="Genres" id="genres" name="genres" onChange={(e) => checkGenres(e)}>
                 <option disabled={true}>Genres</option>
             {
@@ -196,7 +200,7 @@ const CreateGame = () => {
                 }
                 </div>
                 <div className='platforms'>
-                <label>Selected platforms: </label>
+                <label>Platforms: </label>
                 <select id="platforms" defaultInput="Platforms" name="platforms" onChange={(e) => checkPlatforms(e)}>
                 <option disabled={true}>Platforms</option>
                     {
@@ -212,29 +216,29 @@ const CreateGame = () => {
                 }
                 </div>
                 <div className='description'>
-                <label>Insert a description: </label>
-                <input autoComplete="off" type="text" placeholder="description" name="description" input={input.description} onChange={(e) => handlleChange(e)}></input>
+                <label>Description: </label>
+                <input autoComplete="off" type="text" placeholder="Write your videogame description..." name="description" input={input.description} onChange={(e) => handlleChange(e)}></input>
                 {
                         error.description && <p className='error'>{error.description}</p>
                 }
                 </div>
                 <div className='rating'>
-                <label>Insert a rating: </label>
+                <label>Rating: </label>
                 <input type="number" placeholder="rating" name="rating" input={input.rating} onChange={(e) => handlleChange(e)}></input>
                 {
                         error.rating && <p className='error'>{error.rating}</p>
                 }
                 </div>
                 <div className='release'>
-                <label>Insert a release day: </label>
+                <label>Released date: </label>
                 <input type="date" name="released" input={input.released} onChange={(e) => handlleChange(e)}></input>
                 {
                         error.released && <p className='error'>{error.released}</p>
                 }
                 </div>
                 <div className='img'>
-                <label>Insert a image URL: </label>
-                <input autoComplete="off" type="text" name="image" placeholder="Paste a img URL" input={input.image} onChange={(e) => handlleChange(e)}></input>
+                <label>Image: </label>
+                <input autoComplete="off" type="text" name="image" placeholder="Copy/Paste your image URL" input={input.image} onChange={(e) => handlleChange(e)}></input>
                 </div>
                 <button className='btn' type="submit" disabled={!input.name || Object.keys(error).length > 0} onClick={(e) => handleSubmit(e)}>Crear</button>
         </form>
