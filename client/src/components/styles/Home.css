@@ -92,10 +92,12 @@
     display: flex;
     height: fit-content;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 10px;
+    margin-bottom: none;
 }
 
 .titleConteiner {
+    margin-top: 12px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -211,8 +213,11 @@
 .filterConteiner>select {
     width: 150px;
     height: 35px;
-    border: rgb(134, 134, 134) solid 1px;
+    border: 2px solid rgb(0, 45, 128);
     border-radius: 10px;
+    color: white;
+    font-size: medium;
+    background-color: black;
 }
 /* FILTROS fin */
 
