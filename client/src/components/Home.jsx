@@ -82,7 +82,7 @@ const Filters = () => {
                         </div>
                         <div className='create'>
                             <Link to="/create">
-                                <h4>Create a Game</h4>
+                                <h4>Create Game</h4>
                             </Link>
                         </div>
                 </div>
@@ -96,7 +96,6 @@ const Filters = () => {
                         :
                         <>
                             <div className='allFilters'>
-                                <div className='filterTitle'>Orders and filters</div>
                                 <div className='filterConteiner'>
                                     <select defaultValue="Alphabetical order" onChange={(e) => handlleOrder(e)}>
                                         <option value='Alphabetical order' disabled>Oder by Name</option>

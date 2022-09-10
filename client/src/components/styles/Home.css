@@ -86,6 +86,15 @@
 }
 /*  ERROR fin */
 
+.conteinerGames {
+    color: white;
+    background-color: #008bf8;
+    display: flex;
+    height: fit-content;
+    width: 100%;
+    margin-top: 40px;
+}
+
 .titleConteiner {
     display: flex;
     flex-direction: row;
@@ -93,10 +102,10 @@
     align-items: center;
     background-color: #008bf8;
     width: 100%;
-    height: 100px;
+    height: 80px;
     left: 0;
     top: 0;
-    position: fixed;
+    position: relative;
     z-index: 1;
 }
 
@@ -105,6 +114,7 @@
     font-size: 32px;
     color: white;
     font-weight: bold;
+    text-shadow: #0a090a 3px 3px 10px;
 }
 
 
@@ -155,15 +165,28 @@
 
 .create {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     font-size: 20px;
     font-weight: bold;
-    margin-top: 75px;
-    background-color: #008bf8;
-    color: white;
+    font-style: italic;
+    margin-right: 140px;
+    background-color: black;
+    width: 130px;
+    height: 65px;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    border: 2px solid rgb(0, 98, 128);
 }
+
+.create:hover {
+    transform: translateY(1px);
+    border: 2px solid rgb(0, 128, 21);
+}
+
 
 /* FILTROS inicio */
 .allFilters {
@@ -171,14 +194,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    background-color: #008bf8;
+    margin: auto;
+    height:50px;
+    width: 100%;
 }
 
-.filterTitle {
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-}
 
 .filterConteiner {
     display: flex;
@@ -213,3 +234,4 @@
     margin: 10px 0;
 }
 /* CARDS fin */
+
