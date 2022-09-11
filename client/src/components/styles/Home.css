@@ -186,7 +186,7 @@
 
 .create:hover {
     transform: translateY(1px);
-    border: 2px solid rgb(0, 128, 21);
+    border: 2px solid green;
 }
 
 
@@ -226,8 +226,8 @@
     display: grid;
     justify-content: space-between;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
-    margin: 0 auto;
+    grid-gap: 20px;
+    margin: none;
     width: 100%;
     height: 100%;
     padding: 0;

@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {getAllGames, getAllGenres, clearFilters, createGame} from "../redux/actions";
 import loadingGif from './images/loading.gif';
+import createGameGif from './images/createGame.gif';
 import './styles/CreateGame.css';
 
 //cuando este con estilos ver de agregar la imagen de ERROR  para que la muestre
@@ -173,12 +174,13 @@ const CreateGame = () => {
             </div>
             :
             <div className='formConteiner'>
+                <img className='createGame' src={createGameGif} alt="not found" />
             <div className='formConteinerData'>
             <Link className='back' to="/home">🏠 Home</Link>
             <form>
-                <div className='name'>
+                <div className='namevg'>
                 <label>Name: </label>
-                <input autoComplete="off" type="text" placeholder="Name your videogame" name="name" input={input.name} onChange={(e) => handlleChange(e)}></input>
+                <input autoComplete="off" type="text" placeholder="Name your videogame..." name="name" input={input.name} onChange={(e) => handlleChange(e)}></input>
                 {
                     error.name && <p className='error'>{error.name}</p>
                 }
@@ -217,14 +219,14 @@ const CreateGame = () => {
                 </div>
                 <div className='description'>
                 <label>Description: </label>
-                <input autoComplete="off" type="text" placeholder="Write your videogame description..." name="description" input={input.description} onChange={(e) => handlleChange(e)}></input>
+                <input autoComplete="off" type="text" placeholder="Describe your videogame..." name="description" input={input.description} onChange={(e) => handlleChange(e)}></input>
                 {
                         error.description && <p className='error'>{error.description}</p>
                 }
                 </div>
                 <div className='rating'>
                 <label>Rating: </label>
-                <input type="number" placeholder="rating" name="rating" input={input.rating} onChange={(e) => handlleChange(e)}></input>
+                <input type="number" placeholder="Rate your videogame" name="rating" input={input.rating} onChange={(e) => handlleChange(e)}></input>
                 {
                         error.rating && <p className='error'>{error.rating}</p>
                 }
@@ -240,7 +242,7 @@ const CreateGame = () => {
                 <label>Image: </label>
                 <input autoComplete="off" type="text" name="image" placeholder="Copy/Paste your image URL" input={input.image} onChange={(e) => handlleChange(e)}></input>
                 </div>
-                <button className='btn' type="submit" disabled={!input.name || Object.keys(error).length > 0} onClick={(e) => handleSubmit(e)}>Crear</button>
+                <button className='btn' type="submit" disabled={!input.name || Object.keys(error).length > 0} onClick={(e) => handleSubmit(e)}>🛠️ Create</button>
         </form>
         </div>
 

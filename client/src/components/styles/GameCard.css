@@ -7,13 +7,12 @@
 .cardDetails {
     justify-content: center;
     align-items: center;
-    display: flex;
-    flex-direction: column;
     color: black;
-    height: 130px;
+    height: 80px;
     gap: .5em;
     display: grid;
     place-content: center;
+
 }
 
 .cardButton {
@@ -33,13 +32,14 @@
 }
 
 .textBody {
-    color: rgb(134, 134, 134);
-    font-size: 16px;
-    font-weight: 400;
+    color: white;
+    font-size: medium;
+    font-weight: bold;
     line-height: 1.5;
-    margin: 0 auto;
+    margin: auto;
     padding: 0;
     text-align: center;
+    justify-content: center;
 }
 
 .textTitle {
@@ -52,12 +52,12 @@
 
 .card {
     width: 420px;
-    height: 320px;
+    height: 330px;
     border-radius: 20px;
     background: #f5f5f5;
     position: relative;
     padding: 1.8rem;
-    border: 2px solid #c3c6ce;
+    border: 2px solid #cec3cc;
     transition: 0.5s ease-out;
     overflow: visible;
 }

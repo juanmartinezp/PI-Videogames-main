@@ -71,7 +71,7 @@ const Filters = () => {
             <>
                 <div className='conteinerGames'>
                     <div className='titleConteiner'>
-                    <div className='title'>VIDEOGAMES APP</div>
+                    <div className='title'>VIDEOGAMES LIBRARY</div>
                         <SearchBar />
                         {
                             reload === true ?
