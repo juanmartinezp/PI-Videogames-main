@@ -9,26 +9,28 @@
     align-items: center;
     color: black;
     height: 80px;
-    gap: .5em;
+    gap: .1em;
     display: grid;
     place-content: center;
-
 }
 
+
 .cardButton {
-    transform: translate(-50%, 125%);
-    width: 60%;
-    border-radius: 1rem;
-    border: none;
+    width: 120px;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid darkgray;
     background-color: #008bf8;
-    color: #fff;
-    font-size: 1rem;
-    padding: .5rem 1rem;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    opacity: 0;
-    transition: 0.3s ease-out;
+    place-content: center;
+    position: relative;
+    margin-top: 30px;
+    margin: fit-content;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.cardButton:hover {
+    transform: scale(1.1);
 }
 
 .textBody {
@@ -63,11 +65,7 @@
 }
 
 .card:hover {
-    border-color: #008bf8;
-    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+    border-color: green;
+    transform: translateY(-3px);
 }
 
-.card:hover .cardButton {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-}

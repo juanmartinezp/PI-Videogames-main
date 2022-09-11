@@ -238,7 +238,7 @@ const CreateGame = () => {
                         error.released && <p className='error'>{error.released}</p>
                 }
                 </div>
-                <div className='img'>
+                <div className='imgCreate'>
                 <label>Image: </label>
                 <input autoComplete="off" type="text" name="image" placeholder="Copy/Paste your image URL" input={input.image} onChange={(e) => handlleChange(e)}></input>
                 </div>

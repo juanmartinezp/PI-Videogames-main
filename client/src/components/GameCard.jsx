@@ -22,7 +22,7 @@ const GameCard = ({ id, name, image, rating, genres }) => {
                     <p className='textBody'>⭐{rating}</p>
                 </div>
                 <Link to={`/game/${id}`}>
-                    <button className='cardButton'>More info</button>
+                    <button className='cardButton'>See More</button>
                 </Link>
             </div>
         </>
