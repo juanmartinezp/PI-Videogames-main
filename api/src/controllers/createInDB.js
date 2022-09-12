@@ -34,7 +34,8 @@ async function createInDB(req, res, next) {
             return res.status(404).json({msg: 'Missing data to Create your Game'})
         }
         let newGame = await createGame(name, description, released, rating, platforms, genres, image);
-        return res.json(newGame, 'Your Game was successfully created in the DB')
+        console.log('Game created successfully')
+        return res.json(newGame)
     }
     catch (error) {
         return next(error)
@@ -42,4 +43,4 @@ async function createInDB(req, res, next) {
 }
 
 
-module.exports = createInDB
+module.exports = createInDB,createGame

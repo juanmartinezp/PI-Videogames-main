@@ -31,9 +31,11 @@ async function searchByNameDB(name) {
             genres: e.genres?.map(i => i.name),
             createdInDB: e.createdInDB
         }}
-    )
+    )    
     return DBName;
 }
+
+
 
 async function searchByNameApi(name) {
     let {data} = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}`)
@@ -57,7 +59,6 @@ async function searchByNameApi(name) {
         }
     return apiData
 }
-
 
 
 
@@ -95,4 +96,4 @@ async function getAllInfo(req, res, next){
 
 
 
-    module.exports = {getAllInfo}
+    module.exports = getAllInfo
