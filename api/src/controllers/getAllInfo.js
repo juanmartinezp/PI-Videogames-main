@@ -27,7 +27,7 @@ async function searchByNameDB(name) {
             released: e.released,
             rating: e.rating,
             image: e.image,
-            platforms: e.platforms.map(i => i),
+            platforms: e.platforms,
             genres: e.genres?.map(i => i.name),
             createdInDB: e.createdInDB
         }}
@@ -89,6 +89,7 @@ async function getAllInfo(req, res, next){
                 console.log(totalDataSlice.length, 'ENTREEEEEEEEE A getAllInfo CON NAME') 
                 return res.json(totalDataSlice)
             }
+            return res.json(myData);
     } catch (error) {
             return next(error)
     }
