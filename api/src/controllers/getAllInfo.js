@@ -47,7 +47,7 @@ async function searchByNameApi(name) {
                 id: e.id,
                 released: e.released,
                 rating: e.rating,
-                image: e.background_image || "https://cdn.drawception.com/drawings/fhrR1T1nq6.png",
+                image: e.background_image || "https://previews.123rf.com/images/momoforsale/momoforsale2004/momoforsale200400053/144601971-no-game-sign-isolated-on-white-background-vector-illustration-.jpg",
                 platforms: e.platforms.map(i => i.platform.name),
                 genres: e.genres.length > 0 ? e.genres.map(i => i.name) : ["Not info available"],
             }
