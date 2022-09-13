@@ -82,17 +82,41 @@ export function clearFilters() {
     };
 };
 
+// export function orderByName(payload, arr) {
+//     return function (dispatch) {
+//         let order 
+//         if(payload === 'A-Z') {
+//         const arrOrdered =  arr.sort((a , b) => {
+//             if(a.name > b.name) return 1
+//             if(b.name > a.name) return -1
+//             return 0
+//         })
+//         order = arrOrdered
+//         }
+//         else {
+//         const arrOrdered = arr.sort((a , b) => {
+//             if(a.name > b.name) return - 1
+//             if(b.name > a.name) return 1
+//             return 0
+//         })
+//         order = arrOrdered
+//         }
+//         return dispatch({type: ORDER_BY_NAME, payload: order})
+//     };
+// };
+
 export function orderByName(payload) {
     return function (dispatch) {
         return dispatch({type: ORDER_BY_NAME, payload})
-    };
-};
+    }
+}
 
 export function orderByRating(payload) {
     return function (dispatch) {
         return dispatch({type: ORDER_BY_RATING, payload})
     };
 };
+
 
 export function orderByLocation(payload) {
     return function (dispatch) {

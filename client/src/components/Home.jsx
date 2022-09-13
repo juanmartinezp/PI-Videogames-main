@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';  //, useState
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllGames, clearFilters, orderByName, orderByRating, orderByLocation, getAllGenres, orderByGenres } from '../redux/actions';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ const Filters = () => {
 
     const page = useSelector(state => state.page)
     const gamePerPage = 15
-    const [/*sort*/, setSort] = useState()
+    const [/*sort*/, setSort] = useState()  //comentado modo j
     const allGames = useSelector(state => state.allGames)
     const games = useSelector(state => state.games)
     const genres = useSelector(state => state.genres)
@@ -25,27 +25,44 @@ const Filters = () => {
     useEffect(() => {
         dispatch(getAllGames())
         dispatch(getAllGenres())
-    }, [dispatch])
+    }, [dispatch]) //queda arraya vacio modo j, se saca el dispatch
 
     const handlleCLick = () => {
         dispatch(getAllGames())
         dispatch(clearFilters)
     }
 
+    // const handlleOrder = (e) => {
+    //     e.preventDefault()
+    //     dispatch(orderByName(e.target.value, allGames))
+    // }
+
     const handlleOrder = (e) => {
         dispatch(orderByName(e.target.value))
         setSort(e.target.value)
     }
+
+    // const handlleSelect = (e) => {
+    //     dispatch(orderByRating(e.target.value))
+    // }
 
     const handlleSelect = (e) => {
         dispatch(orderByRating(e.target.value))
         setSort(e.target.value)
     }
 
+    // const handlleSelectLocation = (e) => {
+    //     dispatch(orderByLocation(e.target.value))
+    // }
+
     const handlleSelectLocation = (e) => {
         dispatch(orderByLocation(e.target.value))
         setSort(e.target.value)
     }
+
+    // const handlleSelectGenres = (e) => {
+    //     dispatch(orderByGenres(e.target.value))
+    // }
 
     const handlleSelectGenres = (e) => {
         dispatch(orderByGenres(e.target.value))

@@ -187,7 +187,7 @@ const CreateGame = () => {
                 </div>
                 <div className='genres'>
                 <label>Genres: </label>
-                <select defaultInput="Genres" id="genres" name="genres" onChange={(e) => checkGenres(e)}>
+                <select defaultinput="Genres" id="genres" name="genres" onChange={(e) => checkGenres(e)}>
                 <option disabled={true}>Genres</option>
             {
                 genres.map(e => 
@@ -203,7 +203,7 @@ const CreateGame = () => {
                 </div>
                 <div className='platforms'>
                 <label>Platforms: </label>
-                <select id="platforms" defaultInput="Platforms" name="platforms" onChange={(e) => checkPlatforms(e)}>
+                <select id="platforms" defaultinput="Platforms" name="platforms" onChange={(e) => checkPlatforms(e)}>
                 <option disabled={true}>Platforms</option>
                     {
                         platforms.map(e =>

@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";    // useHistory  si voy a h
 import { clearFilters, getGameByID } from "../redux/actions";
 import errorGif from './images/error.gif';
 import loadingGif from './images/loading.gif';
-import backImg from './images/back.png'
 import './styles/GameDetails.css'
 
 
@@ -52,12 +51,12 @@ const GameDetails = () => {
                 :
                 <>
                     <div className='conteinerGame'>
-                        <div className='back'>
+                        <div className='backDetails'>
                             <Link to="/home">
-                                <img src={backImg} alt="go back" />
+                                <h4>🢀 Go Back</h4>
                             </Link>
-                            <div className='gameName'>{game.name}</div>
                         </div>
+                            <div className='gameName'>{game.name}</div>
                         {
                             game.image ?
                                 <img className='gameImg' src={game.image} alt="lol" />
@@ -76,37 +75,37 @@ const GameDetails = () => {
                     </div>
                     <div className='conteinerRating'>
                         <div className='ratingra'>Game rating</div>
-                        <div className='rating'>🏆{game.rating}</div>
-                        <div className='description'>Game description</div>
+                        <div className='ratingDetails'>⭐{game.rating}</div>
+                        <div className='descriptionDetails'>Game Description</div>
                         {
                             game.description ?
-                                <textarea className='gameDescription'>{game.description}</textarea>
+                                <textarea className='gameDescriptionDetails'>{game.description}</textarea>
                                 :
-                                <textarea className='gameDescription'>No info available</textarea>
+                                <textarea className='gameDescriptionDetails'>No info available</textarea>
                         }
                     </div>
                     <div className='conteinerReleased'>
-                        <div className='released'>Release Date</div>
+                        <div className='releasedDetails'>Released Date</div>
                         {
                             game.released ?
-                                <div className='gameReleased'>📅{game.released}</div>
+                                <div className='gameReleasedDetails'>📅{game.released}</div>
                                 :
-                                <div className='gameReleased'>No info available</div>
+                                <div className='gameReleasedDetails'>No released date available</div>
                         }
                     </div>
-                    <div className='conteinerGenresPlatforms'>
-                        <div className='conteinerGenres'>
-                            <div className='genres'>Game genres</div>
+                    <div className='conteinerGenresPlatformsDetails'>
+                        <div className='conteinerGenresDetails'>
+                            <div className='genresDetails'>Game Genres</div>
                             {
                                 game.createdInDB === true ?
-                                    <div className='gameGenres'>{game.genres?.map(e => e.name).join(" | ")}</div>
+                                    <div className='gameGenresDetails'>{game.genres?.map(e => e.name).join(" | ")}</div>
                                     :
-                                    <div className='gameGenres'>{game.genres?.map(e => e).join(" | ")}</div>
+                                    <div className='gameGenresDetails'>{game.genres?.map(e => e).join(" | ")}</div>
                             }
                         </div>
-                        <div className='conteinerPlatforms'>
-                            <div className='platforms'>Platforms supported</div>
-                            <div className='gamePlatforms'>{game.platforms.map(e => e).join(" | ")}</div>
+                        <div className='conteinerPlatformsDet'>
+                            <div className='platformsDetails'>Platforms Supported</div>
+                            <div className='gamePlatformsDetails'>{game.platforms.map(e => e).join(" | ")}</div>
                         </div>
                     </div>
                 </>

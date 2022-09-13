@@ -123,16 +123,17 @@
 /* boton RELOAD inicio */
 .reload {
     appearance: none;
-    background-color: transparent;
-    border: 0.125em solid #e9e6e6;
-    border-radius: 0.9375em;
+    background-color: black;
+    border: 2px solid rgb(0, 98, 128);
+    border-radius: 10px;
     box-sizing: border-box;
-    color: #e9e6e6;
+    color: #008bf8;
     cursor: pointer;
     display: inline-block;
     font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
     line-height: normal;
     margin: 0;
     min-height: 3em;
@@ -153,10 +154,8 @@
 }
 
 .reload:hover {
-    color: #fff;
-    background-color: #1A1A1A;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    transform: translateY(-2px);
+        transform: translateY(1px);
+        border: 2px solid green;
 }
 
 .reload:active {
@@ -170,6 +169,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    color: #008bf8;
     font-size: 20px;
     font-weight: bold;
     font-style: italic;
@@ -227,7 +227,7 @@
     justify-content: space-between;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
-    margin: none;
+    margin: auto;
     width: 100%;
     height: 100%;
     padding: 0;

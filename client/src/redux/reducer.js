@@ -31,8 +31,8 @@ const rootReducer = (state = initialState, action) => {
             return {
             ...state,
             search: false,
-            games: action.payload,
-            allGames: action.payload,
+            games: [...action.payload],
+            allGames: [...action.payload],
             platforms: Array.from(new Set(platforms)),
             page: 1
         }
@@ -96,6 +96,13 @@ const rootReducer = (state = initialState, action) => {
                 allGames: [...state.games, action.payload]
             }
         
+        // case ORDER_BY_NAME:
+        //     return {
+        //         ...state,
+        //         games: [...action.payload],
+        //         page: 1
+        // }
+
         case ORDER_BY_NAME:
             const order = action.payload === 'A-Z' ?
             state.games.sort((a , b) => {
@@ -127,30 +134,13 @@ const rootReducer = (state = initialState, action) => {
         }
 
         case ORDER_BY_LOCATION:
-            if(action.payload === "All games"){
-                return {
-                    ...state,
-                    games: state.allGames,
-                    page: 1
-                }
-            }
-            let order3 = action.payload === "Created at db" ?
-            state.games.filter(e => e.createdInDB)
-            :
-            state.allGames.filter(e => !e.createdInDB)
-            let error2 = {error: "No results found"}
-            if(order3.length === 0){
-                return {
-                    ...state,
-                    allGames: error2,
-                    page: 1
-                }
-            }
+        const gameCreate = state.allGames
+        console.log(gameCreate)
+        const filterCreated = action.payload === "Created at db" ? gameCreate.filter(e => e.createdInDB) : gameCreate.filter(e => !e.createdInDB)
             return {
-            ...state,
-            games: order3,
-            page: 1
-        }
+                ...state,
+                games: action.payload === "All games" ? gameCreate : filterCreated
+            }
 
         case ORDER_BY_GENRES:
             if(action.payload === "Default order"){
