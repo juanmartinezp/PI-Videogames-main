@@ -14,6 +14,7 @@ async function getDBInfo(){
                 }
             }]
         })
+        console.log(game)
         let data = game.map(e =>{
             return {
                 name: e.name,
@@ -21,7 +22,7 @@ async function getDBInfo(){
                 released: e.released,
                 rating: e.rating,
                 image: e.image,
-                platforms: e.platforms.map(i => i),
+                platforms: [e.platforms],
                 genres: e.genres?.map(i => i.name),
                 createdInDB: e.createdInDB
             }}

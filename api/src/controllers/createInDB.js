@@ -3,10 +3,9 @@ const { Videogame, Genres } = require('../db.js')
 
 
 async function createInDB(req, res) {
-    let {name, description, released, rating, platforms, image, genres} = req.body
+    let {name, description, released, rating, platforms, image, genres, createdInDB} = req.body
 
     if (!name || !description || !genres ) {
-        console.log('ESTOY ENTRANDO A CREATE')
         return res.status(404).send("Missing data to Create your Game");
     }
     //valido que el nombre del juego no exista
@@ -24,6 +23,7 @@ async function createInDB(req, res) {
         released: released ? released : "No released date",
         image: image ? image : "https://previews.123rf.com/images/momoforsale/momoforsale2004/momoforsale200400053/144601971-no-game-sign-isolated-on-white-background-vector-illustration-.jpg",
         platforms: platforms ? platforms.toString() : "No platforms available",
+        createdInDB,
 
     });
     //busco el genero en mi Base de datos
