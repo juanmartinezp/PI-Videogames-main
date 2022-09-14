@@ -24,7 +24,7 @@ const CreateGame = () => {
     })
 
     const [error, setError] = useState({})
-
+    const dispacth = useDispatch()
     const validate = (input) => {
         let error = {}
 
@@ -70,7 +70,7 @@ const CreateGame = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-            dispatchEvent(createGame(input))
+        dispacth(createGame(input))
             setInput({
                 name: "",
                 description: "",
@@ -87,46 +87,47 @@ const CreateGame = () => {
     const checkGenres = (e) => {
         setInput({
             ...input,
-            genres: input.genres.includes(e.target.input) ?
+            genres: input.genres.includes(e.target.value) ?
             input.genres :
-            [...input.genres, e.target.input]
+            [...input.genres, e.target.value]
         })
         setError(validate({
             ...input,
-            genres: input.genres.includes(e.target.input) ?
+            genres: input.genres.includes(e.target.value) ?
             input.genres :
-            [...input.genres, e.target.input]
+            [...input.genres, e.target.value]
         }))
     }
 
     const checkPlatforms = (e) => {
         setInput({
             ...input,
-            platforms: input.platforms.includes(e.target.input) ?
+            platforms: input.platforms.includes(e.target.value) ?
             input.platforms :
-            [...input.platforms, e.target.input]
+            [...input.platforms, e.target.value]
         })
         setError(validate({
             ...input,
-            platforms: input.platforms.includes(e.target.input) ?
+            platforms: input.platforms.includes(e.target.value) ?
             input.platforms :
-            [...input.platforms, e.target.input]
+            [...input.platforms, e.target.value]
         }))
     }
 
     const handlleChange = (e) => {
+        console.log(input)
         setInput({
             ...input,
-            [e.target.name] : e.target.input
+            [e.target.name] : e.target.value
         })
         setError(validate({
             ...input,
-            [e.target.name] : e.target.input
+            [e.target.name] : e.target.value
         }))
     }
 
     const filterGenres = (e) => {
-        let newGenres = input.genres.filter(i => i !== e.target.input)
+        let newGenres = input.genres.filter(i => i !== e.target.value)
         setInput({
             ...input,
             genres: newGenres
@@ -138,7 +139,7 @@ const CreateGame = () => {
     }
 
     const filterPlatfroms = (e) => {
-        let newPlatforms = input.platforms.filter(i => i !== e.target.input)
+        let newPlatforms = input.platforms.filter(i => i !== e.target.value)
         setInput({
             ...input,
             platforms: newPlatforms
@@ -149,7 +150,6 @@ const CreateGame = () => {
         }))
     }
 
-    const dispacth = useDispatch()
 
     useEffect(() => {
         dispacth(getAllGenres())
@@ -167,7 +167,7 @@ const CreateGame = () => {
             games.length === 0?
             <div className="loading">
             <img className="loadingImg" src={loadingGif} alt="not found" />
-                <div class="loader">
+                <div className="loader">
                     <span>Loading</span>
                     <span>Loading</span>
                 </div>
@@ -177,10 +177,10 @@ const CreateGame = () => {
                 <img className='createGame' src={createGameGif} alt="not found" />
             <div className='formConteinerData'>
             <Link className='back' to="/home">🏠 Home</Link>
-            <form>
+            <form onSubmit={(e) => handleSubmit(e)}>
                 <div className='namevg'>
                 <label>Name: </label>
-                <input autoComplete="off" type="text" placeholder="Name your videogame..." name="name" input={input.name} onChange={(e) => handlleChange(e)}></input>
+                <input autoComplete="off" type="text" placeholder="Name your videogame..." name="name" value={input.name} onChange={(e) => handlleChange(e)}></input>
                 {
                     error.name && <p className='error'>{error.name}</p>
                 }
@@ -191,7 +191,7 @@ const CreateGame = () => {
                 <option disabled={true}>Genres</option>
             {
                 genres.map(e => 
-                <option key={e.id} input={e.id}>
+                <option key={e.name} value={e.name}>
                     {e.name}
                 </option>
                 )
@@ -207,7 +207,7 @@ const CreateGame = () => {
                 <option disabled={true}>Platforms</option>
                     {
                         platforms.map(e =>
-                        <option key={e} input={e}>
+                        <option key={e} value={e}>
                             {e}
                         </option>
                         )
@@ -219,30 +219,30 @@ const CreateGame = () => {
                 </div>
                 <div className='description'>
                 <label>Description: </label>
-                <input autoComplete="off" type="text" placeholder="Describe your videogame..." name="description" input={input.description} onChange={(e) => handlleChange(e)}></input>
+                <input autoComplete="off" type="text" placeholder="Describe your videogame..." name="description" value={input.description} onChange={(e) => handlleChange(e)}></input>
                 {
                         error.description && <p className='error'>{error.description}</p>
                 }
                 </div>
                 <div className='rating'>
                 <label>Rating: </label>
-                <input type="number" placeholder="Rate your videogame" name="rating" input={input.rating} onChange={(e) => handlleChange(e)}></input>
+                <input type="number" placeholder="Rate your videogame" name="rating" value={input.rating} onChange={(e) => handlleChange(e)}></input>
                 {
                         error.rating && <p className='error'>{error.rating}</p>
                 }
                 </div>
                 <div className='release'>
                 <label>Released date: </label>
-                <input type="date" name="released" input={input.released} onChange={(e) => handlleChange(e)}></input>
+                <input type="date" name="released" value={input.released} onChange={(e) => handlleChange(e)}></input>
                 {
                         error.released && <p className='error'>{error.released}</p>
                 }
                 </div>
                 <div className='imgCreate'>
                 <label>Image: </label>
-                <input autoComplete="off" type="text" name="image" placeholder="Copy/Paste your image URL" input={input.image} onChange={(e) => handlleChange(e)}></input>
+                <input autoComplete="off" type="text" name="image" placeholder="Copy/Paste your image URL" value={input.image} onChange={(e) => handlleChange(e)}></input>
                 </div>
-                <button className='btn' type="submit" disabled={!input.name || Object.keys(error).length > 0} onClick={(e) => handleSubmit(e)}>🛠️ Create</button>
+                <button className='btn' type="submit" disabled={!input.name || Object.keys(error).length > 0}>🛠️ Create</button>
         </form>
         </div>
 
@@ -251,9 +251,9 @@ const CreateGame = () => {
         <div className='genres'>
         {
             input.genres?.map(e => {
-                let genresSelected = genres.find(i => i.id === Number(e))
+                let genresSelected = genres.find(i => i.name === Number(e))
                 return (
-                    <button key={e} className='btn3' input={genresSelected.id} type="button" onClick={(e) => filterGenres(e)}>{genresSelected.name}</button>
+                    <button key={e} className='btn3' value={e} type="button" onClick={(e) => filterGenres(e)}>{e}</button>
                 )    
             })
         }
@@ -264,7 +264,7 @@ const CreateGame = () => {
         <div className='platforms'>
         {
             input.platforms?.map(e =>
-                <button key={e} className='btn2' input={e} type="button" onClick={(e) => filterPlatfroms(e)}>{e}</button>
+                <button key={e} className='btn2' value={e} type="button" onClick={(e) => filterPlatfroms(e)}>{e}</button>
             )
         }
         </div>

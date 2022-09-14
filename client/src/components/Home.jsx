@@ -79,7 +79,7 @@ const Filters = () => {
         allGames.length === 0 ?
         <div className="loading">
         <img className="loadingImg" src={loadingGif} alt="not found" />
-            <div class="loader">
+            <div className="loader">
                 <span>Loading</span>
                 <span>Loading</span>
             </div>

@@ -17,7 +17,18 @@ async function findID(id) {
                     attributes: ["name"]
                 }
             })
-            return game
+            console.log(game)
+            let gamesDB = {
+                id: game.id,
+                name: game.name,
+                description: game.description,
+                released: game.released,
+                image: game.image || 'no image',
+                rating: game.rating,
+                platforms: [game.platforms],
+                genres: game.genres.length > 0 ? game.genres.map(e => e.name) : ['No genres available']
+            }
+            return gamesDB;
         }
         
         let {data} = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
