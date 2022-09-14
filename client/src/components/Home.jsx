@@ -14,7 +14,7 @@ const Filters = () => {
 
     const page = useSelector(state => state.page)
     const gamePerPage = 15
-    const [/*sort*/, setSort] = useState()  //comentado modo j
+    const [/*sort*/, setSort] = useState()  
     const allGames = useSelector(state => state.allGames)
     const games = useSelector(state => state.games)
     const genres = useSelector(state => state.genres)
@@ -25,7 +25,7 @@ const Filters = () => {
     useEffect(() => {
         dispatch(getAllGames())
         dispatch(getAllGenres())
-    }, [dispatch]) //queda arraya vacio modo j, se saca el dispatch
+    }, [dispatch]) 
 
     const handlleCLick = () => {
         dispatch(getAllGames())
