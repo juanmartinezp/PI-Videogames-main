@@ -32,37 +32,24 @@ const Filters = () => {
         dispatch(clearFilters)
     }
 
-    // const handlleOrder = (e) => {
-    //     e.preventDefault()
-    //     dispatch(orderByName(e.target.value, allGames))
-    // }
 
     const handlleOrder = (e) => {
         dispatch(orderByName(e.target.value))
         setSort(e.target.value)
     }
 
-    // const handlleSelect = (e) => {
-    //     dispatch(orderByRating(e.target.value))
-    // }
 
     const handlleSelect = (e) => {
         dispatch(orderByRating(e.target.value))
         setSort(e.target.value)
     }
 
-    // const handlleSelectLocation = (e) => {
-    //     dispatch(orderByLocation(e.target.value))
-    // }
 
     const handlleSelectLocation = (e) => {
         dispatch(orderByLocation(e.target.value))
         setSort(e.target.value)
     }
 
-    // const handlleSelectGenres = (e) => {
-    //     dispatch(orderByGenres(e.target.value))
-    // }
 
     const handlleSelectGenres = (e) => {
         dispatch(orderByGenres(e.target.value))
