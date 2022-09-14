@@ -67,45 +67,6 @@ async function getByID(req, res, next) {
 }
 
 
-// async function getByID(id) {
-//     if (Number(id)) {
-//         let game = await axios.get(`http://api.rawg.io/api/games/${id}?key=${API_KEY}`);
-        
-//         let apiGamesById = {
-//             id: game.data.id,
-//             name: game.data.name,
-//             description: game.data.description_raw,
-//             released: game.data.released,
-//             rating: game.data.rating,
-//             platforms: game.data.platforms.map((platform) => platform.platform),
-//             image: game.data.background_image,
-//             genres: game.data.genres.map(({id, name}) => {return {id, name}}),
-            
-//         };
-//         return [apiGamesById];
-        
-//     } else {
-//         let dbGamesById = await Videogame.findAll({ 
-//             where: { id: id }, 
-//             include: [
-//                 {
-//                     model: Platform,
-//                     attributes: ['id', 'name'], 
-//                     through: { attributes: [] },
-//                 },
-//                 {
-//                     model: Genre,
-//                     attributes: ['id', 'name'], 
-//                     through: { attributes: [] },
-//                 }
-//             ],
-            
-//         });
-        
-//         return dbGamesById;
-//     };
-//};
-
 
 
 module.exports = getByID, findID

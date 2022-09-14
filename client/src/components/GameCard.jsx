@@ -11,9 +11,9 @@ const GameCard = ({ id, name, image, rating, genres }) => {
                 {
 
                     image ?
-                        <img className='img' src={image} alt="lol" />
+                        <img className='img' src={image} alt="https://previews.123rf.com/images/momoforsale/momoforsale2004/momoforsale200400053/144601971-no-game-sign-isolated-on-white-background-vector-illustration-.jpg" />
                         :
-                        <img className='img' src={errorGif} alt="lol" />
+                        <img className='img' src={errorGif} alt="https://previews.123rf.com/images/momoforsale/momoforsale2004/momoforsale200400053/144601971-no-game-sign-isolated-on-white-background-vector-illustration-.jpg" />
 
                 }
                 <div className='cardDetails'>
