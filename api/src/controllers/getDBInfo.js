@@ -1,6 +1,6 @@
 const {Videogame, Genres} = require("../db.js")
 const Sequelize = require('sequelize');
-const op = Sequelize.Op;
+
 
 
 async function getDBInfo(){
